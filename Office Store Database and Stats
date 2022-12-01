@@ -1,0 +1,31 @@
+--Create the database and assign the categories.
+
+CREATE TABLE storedatabase (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, aisle INTEGER, in_stock TEXT);
+
+INSERT INTO storedatabase VALUES (1, "staplers", 1, 2, "yes");
+INSERT INTO storedatabase VALUES (2, "paper", 2, 2, "yes");
+INSERT INTO storedatabase VALUES (3, "pencils", 1, 1, "yes");
+INSERT INTO storedatabase VALUES (4, "desk", 100, 3, "no");
+INSERT INTO storedatabase VALUES (5, "snacks", 4, 2, "yes");
+INSERT INTO storedatabase VALUES (6, "glasses", 6, 5, "yes");
+INSERT INTO storedatabase VALUES (7, "fans", 21, 1, "no");
+INSERT INTO storedatabase VALUES (8, "coffee", 9, 4, "yes");
+INSERT INTO storedatabase VALUES (9, "monitors", 50, 4, "yes");
+INSERT INTO storedatabase VALUES (10, "printers", 150, 2, "yes");
+INSERT INTO storedatabase VALUES (11, "picture frames", 4, 3, "no");
+INSERT INTO storedatabase VALUES (12, "CDs", 10, 1, "no");
+INSERT INTO storedatabase VALUES (13, "notebooks", 2, 1, "yes");
+INSERT INTO storedatabase VALUES (14, "paper towels", 4, 4, "yes");
+INSERT INTO storedatabase VALUES (15, "boxes", 12, 5, "yes");
+
+--Let's see the entire database
+
+SELECT * FROM storedatabase;
+
+--What are the most expensive products?
+
+SELECT name, price FROM storedatabase ORDER BY price DESC;
+
+--Total value of items not in stock (how much are we losing by not having this in stock?)
+
+SELECT SUM(price) FROM storedatabase WHERE in_stock = "no";
