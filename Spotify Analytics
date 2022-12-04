@@ -58,3 +58,19 @@ SELECT ROUND(AVG(tempo)), popularity
 FROM Spotifydata
 GROUP BY popularity
 ORDER BY popularity DESC
+
+-finally, let's make a temporary table to assign the artists with the highest average popularity as "Top Stars"
+
+WITH popularity_average_CTE AS (
+SELECT s.artist_name,
+AVG(s.popularity) AS average_popularity
+FROM SpotifyData s 
+GROUP BY s.artist_name
+)
+ 
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90
+ORDER BY average_popularity DESC
